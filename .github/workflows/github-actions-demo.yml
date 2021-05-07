@@ -20,7 +20,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: cd openapi
-      - run: ls
-      - run: npm install
-      - run: npm run bundle
+      - run: |
+          cd openapi
+          ls
+          npm install
+          npm run bundle
