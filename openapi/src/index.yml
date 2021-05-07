@@ -18,35 +18,35 @@ info:
     name: AlpineBits Alliance (Editorial)
     email: info@alpinebits.org
 servers:
-  - url: https://example.com/
-    description: Example Server URL
   - url: https://destinationdata.alpinebits.opendatahub.bz.it/
     description: OpenDataHub Server
+  - url: https://example.com/
+    description: Example Server URL
 tags:
   - name: Base
     description: Requests to base endpoints
-  - name: Agents
-    description: Requests to resources of type `agents` and related
+  # - name: Agents
+  #   description: Requests to resources of type `agents` and related
   - name: Categories
     description: Requests to resources of type `categories` and related
   - name: Events
     description: Requests to resources of type `events` and related
-  - name: Event Series
-    description: Requests to resources of type `eventSeries` and related
+  # - name: Event Series
+  #   description: Requests to resources of type `eventSeries` and related
   - name: Features
     description: Requests to resources of type `features` and related
   - name: Lifts
     description: Requests to resources of type `lifts` and related
-  - name: Media Objects
-    description: Requests to resources of type `mediaObjects` and related
+  # - name: Media Objects
+  #   description: Requests to resources of type `mediaObjects` and related
   - name: Mountain Areas
     description: Requests to resources of type `mountainAreas` and related
   - name: Ski Slopes
     description: Requests to resources of type `skiSlopes` and related
   - name: Snowparks
     description: Requests to resources of type `snowparks` and related
-  - name: Venues
-    description: Requests to resources of type `venues` and related
+  # - name: Venues
+  #   description: Requests to resources of type `venues` and related
   
 paths:
   /:
@@ -54,14 +54,14 @@ paths:
   /2021-04:
     $ref: route.base.yml#/2021-04
 
-  /2021-04/agents:
-    $ref: route.agents.yml#/base
-  /2021-04/agents/{id}:
-    $ref: route.agents.yml#/id
-  /2021-04/agents/{id}/categories:
-    $ref: route.agents.yml#/categories
-  /2021-04/agents/{id}/multimediaDescriptions:
-    $ref: route.agents.yml#/multimediaDescriptions
+  # /2021-04/agents:
+  #   $ref: route.agents.yml#/base
+  # /2021-04/agents/{id}:
+  #   $ref: route.agents.yml#/id
+  # /2021-04/agents/{id}/categories:
+  #   $ref: route.agents.yml#/categories
+  # /2021-04/agents/{id}/multimediaDescriptions:
+  #   $ref: route.agents.yml#/multimediaDescriptions
     
   /2021-04/categories:
     $ref: route.categories.yml#/base
@@ -97,16 +97,16 @@ paths:
   /2021-04/events/{id}/venues:
     $ref: route.events.yml#/venues
     
-  /2021-04/eventSeries:
-    $ref: route.eventSeries.yml#/base
-  /2021-04/eventSeries/{id}:
-    $ref: route.eventSeries.yml#/id
-  /2021-04/eventSeries/{id}/categories:
-    $ref: route.eventSeries.yml#/categories
-  /2021-04/eventSeries/{id}/editions:
-    $ref: route.eventSeries.yml#/editions
-  /2021-04/eventSeries/{id}/multimediaDescriptions:
-    $ref: route.eventSeries.yml#/multimediaDescriptions
+  # /2021-04/eventSeries:
+  #   $ref: route.eventSeries.yml#/base
+  # /2021-04/eventSeries/{id}:
+  #   $ref: route.eventSeries.yml#/id
+  # /2021-04/eventSeries/{id}/categories:
+  #   $ref: route.eventSeries.yml#/categories
+  # /2021-04/eventSeries/{id}/editions:
+  #   $ref: route.eventSeries.yml#/editions
+  # /2021-04/eventSeries/{id}/multimediaDescriptions:
+  #   $ref: route.eventSeries.yml#/multimediaDescriptions
 
   /2021-04/features:
     $ref: route.features.yml#/base
@@ -130,14 +130,14 @@ paths:
   /2021-04/lifts/{id}/multimediaDescriptions:
     $ref: route.lifts.yml#/multimediaDescriptions
     
-  /2021-04/mediaObjects:
-    $ref: route.mediaObjects.yml#/base
-  /2021-04/mediaObjects/{id}:
-    $ref: route.mediaObjects.yml#/id
-  /2021-04/mediaObjects/{id}/categories:
-    $ref: route.mediaObjects.yml#/categories
-  /2021-04/mediaObjects/{id}/multimediaDescriptions:
-    $ref: route.mediaObjects.yml#/copyrightOwner
+  # /2021-04/mediaObjects:
+  #   $ref: route.mediaObjects.yml#/base
+  # /2021-04/mediaObjects/{id}:
+  #   $ref: route.mediaObjects.yml#/id
+  # /2021-04/mediaObjects/{id}/categories:
+  #   $ref: route.mediaObjects.yml#/categories
+  # /2021-04/mediaObjects/{id}/multimediaDescriptions:
+  #   $ref: route.mediaObjects.yml#/copyrightOwner
 
   /2021-04/mountainAreas:
     $ref: route.mountainAreas.yml#/base
@@ -184,11 +184,11 @@ paths:
   /2021-04/snowparks/{id}/multimediaDescriptions:
     $ref: route.snowparks.yml#/multimediaDescriptions
     
-  /2021-04/venues:
-    $ref: route.venues.yml#/base
-  /2021-04/venues/{id}:
-    $ref: route.venues.yml#/id
-  /2021-04/venues/{id}/categories:
-    $ref: route.venues.yml#/categories
-  /2021-04/venues/{id}/multimediaDescriptions:
-    $ref: route.venues.yml#/multimediaDescriptions
+  # /2021-04/venues:
+  #   $ref: route.venues.yml#/base
+  # /2021-04/venues/{id}:
+  #   $ref: route.venues.yml#/id
+  # /2021-04/venues/{id}/categories:
+  #   $ref: route.venues.yml#/categories
+  # /2021-04/venues/{id}/multimediaDescriptions:
+  #   $ref: route.venues.yml#/multimediaDescriptions
