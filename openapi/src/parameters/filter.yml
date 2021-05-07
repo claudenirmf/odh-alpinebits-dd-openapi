@@ -1,0 +1,28 @@
+filter:
+    name: filter
+    in: query
+    style: deepObject
+    explode: true
+    allowReserved: true
+    description: Filters resources in the endpoint based on "label-specific" or
+      "simple generic" filters. Label-specific filters have their behavior and
+      syntax defined by the server (e.g., a filter for resources available in
+      desired languages, `filter[lang]=eng,ita,deu`). Simple generic filters
+      combine a field (among the fields in the resources present in `data`) and
+      a logical operand (e.g., filter resources with a last update value greater
+      than a certain date, `filter[lastUpdate][gt]=2021-04-01`). The operands
+      and their behavior is defined by the standard. Filters may refer to nested
+      fields (e.g., `filter[name.eng][exists]=true`). If the server is unable
+      process any filter, it shall respond with `400 Bad Request`.
+    schema:
+      type: object
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: object
+            additionalProperties:
+              type: string
+      example:
+        lang: eng,ita,deu
+        lastUpdate:
+          gt: '2021-04-01'

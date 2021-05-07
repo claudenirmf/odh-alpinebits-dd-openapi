@@ -1,0 +1,8 @@
+{
+  "links": {
+    "self": "https://example.com/",
+    "2020-04": "https://example.com/2020-04/",
+    "2021-04": "https://example.com/2021-04/"
+  },
+  "data": null
+}
