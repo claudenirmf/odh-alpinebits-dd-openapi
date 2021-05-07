@@ -25,3 +25,7 @@ jobs:
           ls
           npm install
           npm run bundle
+      
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Deploy Swagger
