@@ -14,14 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ls
-      - run: ls ${{ github.repository }}
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: cd ${{ github.repository }}/openapi
+      - run: cd openapi
       - run: ls
       - run: npm install
       - run: npm run bundle
