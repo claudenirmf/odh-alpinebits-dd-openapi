@@ -8,10 +8,10 @@ The ODH AlpineBits DestinationData is a REST API that exposes real open data fro
 ODH AlpineBits DestinationData is a great place for developers to consume data on the alpine tourism sector and boost their solutions and learn the AlpineBits DestinationData standard for the exchange of data tourism data.
 
 The OpenAPI specification in this repository documents the reference server hosted [here](https://github.com/noi-techpark/odh-alpinebits-destination-data-server).
-To access this specification as a live documentation, please visit our [Swagger page](https://claudenirmf.github.io/odh-alpinebits-destination-data-swagger/swagger).
+To access this specification as a live documentation, please visit our [Swagger page](https://claudenirmf.github.io/odh-alpinebits-dd-openapi/swagger).
 
 
-[<img src="resources/swagger_screenshot.png">](https://claudenirmf.github.io/odh-alpinebits-destination-data-swagger/swagger)
+[<img src="resources/swagger_screenshot.png">](https://claudenirmf.github.io/odh-alpinebits-dd-openapi/swagger)
 
 This specification is built on top of the official [AlpineBits DestinationData OpenAPI specification](https://gitlab.com/alpinebits/destinationdata/tools).
 
