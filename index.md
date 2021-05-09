@@ -1,5 +1,3 @@
-<!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->
-
 # ODH AlpineBits DestinationData - OpenAPI
 
 Welcome to the OpenAPI specification of the ODH AlpineBits DestinationData.
