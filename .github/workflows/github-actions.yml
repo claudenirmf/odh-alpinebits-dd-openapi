@@ -28,7 +28,6 @@ jobs:
           npm run bundle
           cd ..
           ls
-          rm -f README.md
           echo \"<\!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->\n\" >  README.md
           cat index.md >> README.md
 
