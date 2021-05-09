@@ -1,4 +1,3 @@
-<\!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->\n
 <!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->
 
 # ODH AlpineBits DestinationData - OpenAPI
