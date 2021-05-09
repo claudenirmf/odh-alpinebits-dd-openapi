@@ -8,10 +8,10 @@ base:
       - $ref: parameters/fields.yml#/fields
       - $ref: parameters/page.yml#/pagesize
       - $ref: parameters/page.yml#/pagenumber
-      - $ref: parameters/filter.yml#/filter
+      - $ref: parameters/filter.yml#/filterActivities
       - $ref: parameters/search.yml#/search
-      - $ref: parameters/sort.yml#/sort
-      - $ref: parameters/random.yml#/random
+      # - $ref: parameters/sort.yml#/sort
+      # - $ref: parameters/random.yml#/random
     responses:
       '200':
         description: OK

@@ -1,27 +1,13 @@
 search:
-    name: search
-    in: query
-    style: deepObject
-    explode: true
-    allowReserved: true
-    description: >
-      Search requests retrieve resources containing a search string
-      in one or any of its textual fields which may consider all available
-      languages. Searches in specific fields must specify one of the fields of
-      the resource types present in `data` (e.g., `search[name]=bozen`).
-      Searches through all textual fields, on the other hand, must not specify
-      a field (e.g., `search=brixen`). If the server is unable process any
-      search request, it shall respond with `400 Bad Request`.
-
-      <br/><br/>
-      
-      Notice: in OpenAPI version 3.0.3, Swagger does not support the
-      specification of queries that can be serialized as either strings (e.g.,
-      `search=brixen`) or objects (e.g., `search[name]=bozen`). This may limit
-      the capabilities of the browser interface for building requests.
-    schema:
-      type: object
-      additionalProperties:
-        type: string
-      example:
-        name: bozen
+  name: search[name]
+  in: query
+  style: form
+  explode: true
+  allowReserved: true
+  description: >
+    Searches resources containing a desired substring in their names, regardless
+    of language or case (e.g., `search[name]=bozen`).
+  schema:
+    type: string
+    minimum: 1
+    example: bozen
