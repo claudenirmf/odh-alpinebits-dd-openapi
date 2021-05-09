@@ -23,16 +23,14 @@ jobs:
       - name: Build the OpenAPI specification and generate the Swagger page
         run: |
           cd openapi
-          ls
           npm install
           npm run bundle
-          cd ..
-          ls
-          echo \"<\!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->\n\" >  README.md
-          cat index.md >> README.md
 
-      # - name: Generate the README.md file from the index.md file
-      #   run: |
+      - name: Generate the README.md file from the index.md file
+        run: |
+          rm -f README.md
+          echo "<\!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->\n" >  README.md
+          cat index.md >> README.md
       
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
