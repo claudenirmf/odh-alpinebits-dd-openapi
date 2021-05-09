@@ -1,3 +1,7 @@
 theme: jekyll-theme-cayman
 exclude:
-  - "**/node_modules/**/*"
+  - "openapi/"
+
+title: OpenDataHub AlpineBits DestinationData
+description: Learn, Build, and Consume data through ODH's AlpineBits
+  DestinationData Reference Server
