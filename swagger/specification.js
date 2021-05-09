@@ -136,18 +136,6 @@ specification =
           },
           {
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/3"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/4"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/5"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/6"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/7"
           }
         ],
         "responses": {
@@ -608,16 +596,90 @@ specification =
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/3"
           },
           {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/4"
+            "name": "filter",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "allowReserved": true,
+            "description": "Filters resources in the endpoint based on \"label-specific\" or \"simple generic\" filters. The available filters are:\n  - `filter[lang]`: filters resources containing text data in the desired\n  languages (e.g., `filter[lang]=eng,ita,deu`). Receives comma-separated\n  ISO 639-3 languages tags.\n\n  - `filter[lastUpdate][gt]`: filters resources updated after a desired\n  date (e.g., `filter[lastUpdate][gt]=2021-04-01`). Receives an ISO 8601\n  date string.\n  \n  - `filter[lastUpdate][lt]`: filters resources updated before a desired\n  date (e.g., `filter[lastUpdate][lt]=2021-04-01`). Receives an ISO 8601\n  date string.\n\n  - `filter[startDate][gt]`: filters events with a start date greater than a\n  desired date (e.g., `filter[startDate][gt]=2021-04-01`). Receives an ISO\n  8601 date string.\n  \n  - `filter[startDate][lt]`: filters events with a start date lower than a\n  desired date (e.g., `filter[startDate][lt]=2021-04-01`). Receives an ISO\n  8601 date string.\n\n  - `filter[endDate][gt]`: filters events with a end date greater than a\n  desired date (e.g., `filter[endDate][gt]=2021-04-01`). Receives an ISO\n  8601 date string.\n  \n  - `filter[endDate][lt]`: filters events with a end date lower than a\n  desired date (e.g., `filter[endDate][lt]=2021-04-01`). Receives an ISO\n  8601 date string.\n\n  - `filter[categories][any]`: filters resources having any of the desired\n  categories (e.g., `filter[categories][any]=example:cat1,example:cat2`).\n  Receives comma-separated category ids.\n\n  - `filter[categories][all]`: filters resources having all of the desired\n  categories (e.g., `filter[categories][all]=example:cat1,example:cat2`).\n  Receives comma-separated category ids.\n\n  - `filter[venues][near]`: filters resources whose venues' geometries are\n  near a desired GPS point (e.g.,\n  `filter[venues][near]=11.309245,46.862025,10000`). Receives three\n  comma-separated numbers in the following order: a longitude value, a\n  latitude value, and a proximity radius in meters.\n\n\nIf the server is unable process any filter, it shall respond with `400 Bad Request`.\n",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "lang": {
+                  "type": "string"
+                },
+                "lastUpdate": {
+                  "type": "object",
+                  "properties": {
+                    "gt": {
+                      "type": "string"
+                    },
+                    "lt": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "categories": {
+                  "type": "object",
+                  "properties": {
+                    "any": {
+                      "type": "string"
+                    },
+                    "all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "geometries": {
+                  "type": "object",
+                  "properties": {
+                    "near": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "example": {
+                "lang": "eng,ita,deu",
+                "lastUpdate": {
+                  "gt": "2021-04-01"
+                },
+                "categories": {
+                  "any": "example:category"
+                },
+                "geometries": {
+                  "near": "11.309245,46.862025,10000"
+                }
+              }
+            }
           },
           {
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/5"
           },
           {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/6"
+            "name": "sort",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "description": "Requests for retrieved resources to be sorted by the value some selected field. Sorting requests may be in ascending (e.g., `sort=startDate`) or descending order (e.g., `sort=-startDate`) by prefixing the field name with a MINUS (U+002D) character. Sorted requests may also take multiple fields as input as well as nested fields (e).g., `sort=-startDate,name.eng`). If a request includes both `random` and `sort` requests, the server shall respond with `400 Bad Request`. If a server is unable to use any selected fields to sort resources, it shall respond with `400 Bad Request`.",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "(\\w|-)+(,(\\w|-)+)*",
+              "example": "startDate"
+            }
           },
           {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/7"
+            "name": "random",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "description": "Requests for resources to be retrieved in a pseudo-random sequence from a provided seed (e.g., `random=0`). The server shall provide consistent pagination over the same seed value. If a request includes both `random` and `sort` requests, the server shall respond with `400 Bad Request`.",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "example": 10
+            }
           }
         ],
         "responses": {
@@ -2240,18 +2302,6 @@ specification =
           },
           {
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/3"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/4"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/5"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/6"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/7"
           }
         ],
         "responses": {
@@ -2761,70 +2811,69 @@ specification =
             "style": "deepObject",
             "explode": true,
             "allowReserved": true,
-            "description": "Filters resources in the endpoint based on \"label-specific\" or \"simple generic\" filters. Label-specific filters have their behavior and syntax defined by the server (e.g., a filter for resources available in desired languages, `filter[lang]=eng,ita,deu`). Simple generic filters combine a field (among the fields in the resources present in `data`) and a logical operand (e.g., filter resources with a last update value greater than a certain date, `filter[lastUpdate][gt]=2021-04-01`). The operands and their behavior is defined by the standard. Filters may refer to nested fields (e.g., `filter[name.eng][exists]=true`). If the server is unable process any filter, it shall respond with `400 Bad Request`.",
+            "description": "Filters resources in the endpoint based on \"label-specific\" or \"simple generic\" filters. The available filters are:\n  - `filter[lang]`: filters resources containing text data in the desired\n  languages (e.g., `filter[lang]=eng,ita,deu`). Receives comma-separated\n  ISO 639-3 languages tags.\n\n  - `filter[lastUpdate][gt]`: filters resources updated after a desired\n  date (e.g., `filter[lastUpdate][gt]=2021-04-01`). Receives an ISO 8601\n  date string.\n  \n  - `filter[lastUpdate][lt]`: filters resources updated before a desired\n  date (e.g., `filter[lastUpdate][gt]=2021-04-01`). Receives an ISO 8601\n  date string.\n\n  - `filter[categories][any]`: filters resources having any of the desired\n  categories (e.g., `filter[categories][any]=example:cat1,example:cat2`).\n  Receives comma-separated category ids.\n\n  - `filter[categories][all]`: filters resources having all of the desired\n  categories (e.g., `filter[categories][all]=example:cat1,example:cat2`).\n  Receives comma-separated category ids.\n\n  - `filter[geometries][near]`: filters resources whose geometries are near\n  a desired GPS point (e.g.,\n  `filter[geometries][near]=11.309245,46.862025,10000`). Receives three\n  comma-separated numbers in the following order: a longitude value, a\n  latitude value, and a proximity radius in meters.\n\n\nIf the server is unable process any filter, it shall respond with `400 Bad Request`.\n",
             "schema": {
               "type": "object",
-              "additionalProperties": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "object",
-                    "additionalProperties": {
+              "properties": {
+                "lang": {
+                  "type": "string"
+                },
+                "lastUpdate": {
+                  "type": "object",
+                  "properties": {
+                    "gt": {
+                      "type": "string"
+                    },
+                    "lt": {
                       "type": "string"
                     }
                   }
-                ]
+                },
+                "categories": {
+                  "type": "object",
+                  "properties": {
+                    "any": {
+                      "type": "string"
+                    },
+                    "all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "geometries": {
+                  "type": "object",
+                  "properties": {
+                    "near": {
+                      "type": "string"
+                    }
+                  }
+                }
               },
               "example": {
                 "lang": "eng,ita,deu",
                 "lastUpdate": {
                   "gt": "2021-04-01"
+                },
+                "categories": {
+                  "any": "example:category"
+                },
+                "geometries": {
+                  "near": "11.309245,46.862025,10000"
                 }
               }
             }
           },
           {
-            "name": "search",
+            "name": "search[name]",
             "in": "query",
-            "style": "deepObject",
+            "style": "form",
             "explode": true,
             "allowReserved": true,
-            "description": "Search requests retrieve resources containing a search string in one or any of its textual fields which may consider all available languages. Searches in specific fields must specify one of the fields of the resource types present in `data` (e.g., `search[name]=bozen`). Searches through all textual fields, on the other hand, must not specify a field (e.g., `search=brixen`). If the server is unable process any search request, it shall respond with `400 Bad Request`.\n<br/><br/>\nNotice: in OpenAPI version 3.0.3, Swagger does not support the specification of queries that can be serialized as either strings (e.g., `search=brixen`) or objects (e.g., `search[name]=bozen`). This may limit the capabilities of the browser interface for building requests.\n",
-            "schema": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              },
-              "example": {
-                "name": "bozen"
-              }
-            }
-          },
-          {
-            "name": "sort",
-            "in": "query",
-            "style": "form",
-            "explode": false,
-            "description": "Requests for retrieved resources to be sorted by the value some selected field. Sorting requests may be in ascending (e.g., `sort=startDate`) or descending order (e.g., `sort=-startDate`) by prefixing the field name with a MINUS (U+002D) character. Sorted requests may also take multiple fields as input as well as nested fields (e).g., `sort=-startDate,name.eng`). If a request includes both `random` and `sort` requests, the server shall respond with `400 Bad Request`. If a server is unable to use any selected fields to sort resources, it shall respond with `400 Bad Request`.",
+            "description": "Searches resources containing a desired substring in their names, regardless of language or case (e.g., `search[name]=bozen`).\n",
             "schema": {
               "type": "string",
-              "minLength": 1,
-              "pattern": "(\\w|-)+(,(\\w|-)+)*",
-              "example": "startDate"
-            }
-          },
-          {
-            "name": "random",
-            "in": "query",
-            "style": "form",
-            "explode": false,
-            "description": "Requests for resources to be retrieved in a pseudo-random sequence from a provided seed (e.g., `random=0`). The server shall provide consistent pagination over the same seed value. If a request includes both `random` and `sort` requests, the server shall respond with `400 Bad Request`.",
-            "schema": {
-              "type": "string",
-              "minLength": 1,
-              "example": 10
+              "minimum": 1,
+              "example": "bozen"
             }
           }
         ],
@@ -3692,18 +3741,6 @@ specification =
           },
           {
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/3"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/4"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/5"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/6"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/7"
           }
         ],
         "responses": {
@@ -5938,12 +5975,6 @@ specification =
           },
           {
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/5"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/6"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/7"
           }
         ],
         "responses": {
@@ -6831,12 +6862,6 @@ specification =
           },
           {
             "$ref": "#/paths/~12021-04~1lifts/get/parameters/5"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/6"
-          },
-          {
-            "$ref": "#/paths/~12021-04~1lifts/get/parameters/7"
           }
         ],
         "responses": {
