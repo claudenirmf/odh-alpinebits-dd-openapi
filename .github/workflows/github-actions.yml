@@ -26,13 +26,14 @@ jobs:
           ls
           npm install
           npm run bundle
-
-      - name: Generate the README.md file from the index.md file
-        run: |
+          cd ..
           ls
           rm -f README.md
           echo \"<\!-- DO NOT MODIFY THIS FILE! - Auto generated copy of index.md -->\n\" >  README.md
           cat index.md >> README.md
+
+      # - name: Generate the README.md file from the index.md file
+      #   run: |
       
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
